@@ -32,6 +32,25 @@ function playSingleRound(playerSelection, computerSelection) {
 
 }
 
+function displayStatisticsOnConsole(round, playerSelection, computerSelection, result) {
+    console.log('==================================');
+    console.log('Round: ' + round);
+    console.log('Player Choice: ' + playerSelection);
+    console.log('Computer Choice: ' + computerSelection);
+    console.log('Current round result: ' + result);
+    console.log('==================================');
+}
+
+function reportWinner(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        console.log('Player Wins!');
+    } else if (playerScore < computerScore) {
+        console.log('Computer Wins!');
+    } else {
+        console.log('It\'s a tie!');
+    }
+}
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -41,13 +60,7 @@ function game() {
         const computerSelection = getComputerChoice();
         const result = playSingleRound(playerSelection, computerSelection);
 
-        // display current round statistics
-        console.log('==================================');
-        console.log('Round: '+round);
-        console.log('Player Choice: '+playerSelection);
-        console.log('Computer Choice: '+computerSelection);
-        console.log('Current round result: '+result);
-        console.log('==================================');
+        displayStatisticsOnConsole(round, playerSelection, computerSelection, result);
 
         // record score
         if (result.includes('You Win')) {
@@ -56,12 +69,7 @@ function game() {
             computerScore++;
         }
     }
-    // report winner
-    if (playerScore > computerScore) {
-        console.log('Player Wins!');
-    } else if (playerScore < computerScore) {
-        console.log('Computer Wins!');
-    } else {
-        console.log('It\'s a tie!');
-    }
+    reportWinner(playerScore, computerScore);
 }
+
+game();

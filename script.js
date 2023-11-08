@@ -41,6 +41,14 @@ function game() {
         const computerSelection = getComputerChoice();
         const result = playSingleRound(playerSelection, computerSelection);
 
+        // display current round statistics
+        console.log('==================================');
+        console.log('Round: '+round);
+        console.log('Player Choice: '+playerSelection);
+        console.log('Computer Choice: '+computerSelection);
+        console.log('Current round result: '+result);
+        console.log('==================================');
+
         // record score
         if (result.includes('You Win')) {
             playerScore++;

@@ -31,3 +31,29 @@ function playSingleRound(playerSelection, computerSelection) {
     return 'Invalid selection';
 
 }
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let round = 1; round <= 5; round++) {
+        const playerSelection = prompt('Enter your choice!');
+        const computerSelection = getComputerChoice();
+        const result = playSingleRound(playerSelection, computerSelection);
+
+        // record score
+        if (result.includes('You Win')) {
+            playerScore++;
+        } else if (result.includes('You Lose')) {
+            computerScore++;
+        }
+    }
+    // report winner
+    if (playerScore > computerScore) {
+        console.log('Player Wins!');
+    } else if (playerScore < computerScore) {
+        console.log('Computer Wins!');
+    } else {
+        console.log('It\'s a tie!');
+    }
+}

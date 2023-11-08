@@ -55,10 +55,16 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let round = 1; round <= 5; round++) {
+    let round = 1
+    while (round <= 5) {
         const playerSelection = prompt('Enter your choice!');
         const computerSelection = getComputerChoice();
         const result = playSingleRound(playerSelection, computerSelection);
+
+        // nullify round
+        if (result.includes('Invalid')) {
+            continue;
+        }
 
         displayStatisticsOnConsole(round, playerSelection, computerSelection, result);
 
@@ -68,6 +74,8 @@ function game() {
         } else if (result.includes('You Lose')) {
             computerScore++;
         }
+
+        round++;
     }
     reportWinner(playerScore, computerScore);
 }

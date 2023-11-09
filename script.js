@@ -5,10 +5,7 @@ function getComputerChoice() {
 }
 
 function playSingleRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-
     if (playerSelection === computerSelection) return 'tie';
-
     if (playerSelection === 'rock') {
         if (computerSelection === 'scissors') {
             return 'You Win! Rock beats Scissors';
@@ -27,12 +24,9 @@ function playSingleRound(playerSelection, computerSelection) {
         }
         return 'You Lose! Rock beats Scissors';
     }
-
-    return 'Invalid selection';
-
 }
 
-function displayCurrentSelectionOnConsole(round, playerSelection, computerSelection, result) {
+function displayCurrentRoundInfo(round, playerSelection, computerSelection, result) {
     console.log('==================================');
     console.log('Round: ' + round);
     console.log('Player Choice: ' + playerSelection);
@@ -41,7 +35,7 @@ function displayCurrentSelectionOnConsole(round, playerSelection, computerSelect
     console.log('==================================');
 }
 
-function displayWinnerOnConsole(playerScore, computerScore) {
+function displayWinner(playerScore, computerScore) {
     if (playerScore > computerScore) {
         console.log('Player Wins!');
     } else if (playerScore < computerScore) {
@@ -51,33 +45,32 @@ function displayWinnerOnConsole(playerScore, computerScore) {
     }
 }
 
+function isValidPlayerInput(x) {
+    return ['rock', 'paper', 'scissors'].includes(x.toLowerCase());
+}
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-
-    let round = 1
+    let round = 1;
+    
     while (round <= 5) {
-        const playerSelection = prompt('Enter your choice!');
+        let playerSelection = null;
+        while (true) {
+            playerSelection = prompt('Enter your choice!');
+            if (isValidPlayerInput(playerSelection)) break;
+            console.log('Invalid Selection!');
+        }
         const computerSelection = getComputerChoice();
         const result = playSingleRound(playerSelection, computerSelection);
-
-        // nullify round
-        if (result.includes('Invalid')) {
-            continue;
-        }
-
-        displayCurrentSelectionOnConsole(round, playerSelection, computerSelection, result);
-
-        // record score
-        if (result.includes('You Win')) {
-            playerScore++;
-        } else if (result.includes('You Lose')) {
-            computerScore++;
-        }
-
-        round++;
+        displayCurrentRoundInfo(round, playerSelection, computerSelection, result);
+        
+        if (result.includes('You Win')) playerScore++;
+        if (result.includes('You Lose')) computerScore++;
+    
+        round++;      
     }
-    displayWinnerOnConsole(playerScore, computerScore);
+    displayWinner(playerScore, computerScore);
 }
 
 game();

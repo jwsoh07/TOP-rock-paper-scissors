@@ -32,7 +32,7 @@ function playSingleRound(playerSelection, computerSelection) {
 
 }
 
-function displayStatisticsOnConsole(round, playerSelection, computerSelection, result) {
+function displayCurrentSelectionOnConsole(round, playerSelection, computerSelection, result) {
     console.log('==================================');
     console.log('Round: ' + round);
     console.log('Player Choice: ' + playerSelection);
@@ -41,7 +41,7 @@ function displayStatisticsOnConsole(round, playerSelection, computerSelection, r
     console.log('==================================');
 }
 
-function reportWinner(playerScore, computerScore) {
+function displayWinnerOnConsole(playerScore, computerScore) {
     if (playerScore > computerScore) {
         console.log('Player Wins!');
     } else if (playerScore < computerScore) {
@@ -66,7 +66,7 @@ function game() {
             continue;
         }
 
-        displayStatisticsOnConsole(round, playerSelection, computerSelection, result);
+        displayCurrentSelectionOnConsole(round, playerSelection, computerSelection, result);
 
         // record score
         if (result.includes('You Win')) {
@@ -77,7 +77,7 @@ function game() {
 
         round++;
     }
-    reportWinner(playerScore, computerScore);
+    displayWinnerOnConsole(playerScore, computerScore);
 }
 
 game();

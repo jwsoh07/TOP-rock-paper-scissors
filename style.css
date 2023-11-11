@@ -41,7 +41,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    row-gap: 5px;
+    column-gap: 30px;
 }
 
 .player-container,
@@ -73,6 +74,18 @@ main {
     align-items: center;
     border: 1px solid black;
     border-radius: 8px;
+}
+
+.player-options .scissors:hover {
+    background-color: #F3D7D7;
+}
+
+.player-options .rock:hover {
+    background-color: #E8FFE2;
+}
+
+.player-options .paper:hover {
+    background-color: #E5F9FF;
 }
 
 .score-counter {

@@ -22,7 +22,7 @@ main {
 
 .results {
     position: absolute;
-    top: -80px;
+    top: -100px;
     width: 100vw;
     text-align: center;
 }
@@ -41,13 +41,42 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
 }
 
-.player-options,
-.cpu-options {
+.player-container,
+.cpu-container {
     flex: 0 0 min(90vw, 320px);
+}
+
+.name {
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .options {
     display: flex;
+    justify-content: space-between;
+    padding: 35px 15px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.options>div {
+    flex: 0 0 30%;
+    font-size: 45px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.score-counter {
+    text-align: end;
+    font-family: 'Inter';
+    margin-top: 10px;
 }
